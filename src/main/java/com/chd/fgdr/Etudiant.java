@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Etudiant {
@@ -14,6 +15,8 @@ public class Etudiant {
 	private String nom;
 	private String prenom;
 	private Date dateNaiss;
+	@ManyToOne
+	private Formation formation;
 	public Long getId() {
 		return id;
 	}
@@ -38,14 +41,23 @@ public class Etudiant {
 	public void setDateNaiss(Date dateNaiss) {
 		this.dateNaiss = dateNaiss;
 	}
+	
+	public Formation getFormation() {
+		return formation;
+	}
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
 	public Etudiant() {
 		super();
 	}
-	public Etudiant(String nom, String prenom, Date dateNaiss) {
+	public Etudiant(String nom, String prenom, Date dateNaiss, Formation formation) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaiss = dateNaiss;
+		this.formation=formation;
+		
 	}
 	@Override
 	public String toString() {
